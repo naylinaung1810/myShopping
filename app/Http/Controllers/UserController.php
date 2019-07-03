@@ -17,7 +17,33 @@ class UserController extends Controller
    // public $count;
     public function getHome()
     {
-        return view('home');
+        //$post_img=Postimage::get();
+        $category=Category::get();
+        $posts=Post::orderBy('id','desc')->get();
+        return view('products')->with(['posts'=>$posts,'category'=>$category]);
+    }
+
+    public function deleteOrder()
+    {
+        if(Session::has('cart'))
+        {
+            Session::forget('cart');
+            return redirect()->route('home.fe');
+        }
+    }
+
+    public function getProductDetail($id)
+    {
+        $posts=Post::whereId($id)->first();
+        return view('detail')->with(['post'=>$posts]);
+    }
+
+    public function getProduct($id)
+    {
+        $category=Category::get();
+        $cat=Category::whereId($id)->first();
+        $posts=Post::where('category_id',$id)->orderBy('id','desc')->get();
+        return view('productCat')->with(['posts'=>$posts,'category'=>$category,'cat'=>$cat]);
     }
 
     public function getWelcome()

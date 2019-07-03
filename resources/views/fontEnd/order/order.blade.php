@@ -10,10 +10,13 @@
         <div class="row ml-2">
             <div class="col-md-8" style="border-right: 1px solid grey">
                 <div class="row">
-                    <span class="ml-3" style="font-size: 30px"><i class="fa fa-folder"></i> Cart Detail</span>
-                    {{--<p class="mr-auto">--}}
-                    <a href="{{route('/')}}" class="btn btn-primary mr-auto"><i class="fa fa-shopping-basket"></i> Continue</a>
-                    {{--</p>--}}
+                    <div class="col-12">
+                        <span class="ml-3" style="font-size: 30px"><i class="fa fa-folder"></i> Cart Detail</span>
+                        <div class="float-right">
+                            <a href="{{route('home.fe')}}" class="btn btn-primary"><i class="fa fa-shopping-basket"></i> Continue</a>
+                            <a href="{{route('order.delete')}}" class="btn btn-danger"><i class="fa fa-times-circle"></i> Delete</a>
+                        </div>
+                    </div>
                 </div>
                 <table class="table table-hover" >
                     <tr>

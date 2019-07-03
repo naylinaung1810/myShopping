@@ -23,6 +23,24 @@ Route::get('/home',
         'as'=>'home.fe'
     ]);
 
+Route::get('/products/id/{id}',
+    [
+        'uses'=>'UserController@getProduct',
+        'as'=>'product.get'
+    ]);
+
+Route::get('/order/delete',
+    [
+        'uses'=>'UserController@deleteOrder',
+        'as'=>'order.delete'
+    ]);
+
+Route::get('/products/detail/id/{id}',
+    [
+        'uses'=>'UserController@getProductDetail',
+        'as'=>'product.detail'
+    ]);
+
 //Route::get('/get/all/posts',
 //    [
 //        'uses'=>'UserController@getAllPosts',

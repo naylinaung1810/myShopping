@@ -28,7 +28,7 @@
                                    <button type="button" name="{{$post->id}}" id="addcart" class="btn btn-success" style="border-radius: 25px" data-toggle="tooltip" data-placement="left" title="Add to cart">
                                        <i class="fa fa-shopping-cart"></i>
                                    </button>
-                                   <button type="button" data-toggle="tooltip" class="btn btn-primary pl-4 pr-4" data-placement="top" title="See Detail More.....">Detail..</button>
+                                   <a href="{{route('product.detail',['id'=>$post->id])}}" data-toggle="tooltip" class="btn btn-primary pl-4 pr-4" data-placement="top" title="See Detail More.....">Detail..</a>
 
                                </div>
                            </div>
@@ -47,38 +47,5 @@
     @stop
 
 @section('script')
-    <script>
-        $(function () {
 
-            count();
-            $('[data-toggle="tooltip"]').tooltip();
-            //////////////////////////////////////////////////////////
-                $('body').delegate('#addcart','click',function (e) {
-                    $.ajax({
-                        url:'/add/cart',
-                        type: 'GET',
-                        data: {
-                            id:this.name
-                        },
-                        success: function( data ){
-                           count();
-                        }
-                    });
-                });
-            ///////////////////////////////////////////////////////
-            function count()
-            {
-                $.ajax({
-                    url:'/get/cart/count',
-                    type: 'GET',
-                    success: function( data ){
-                        $('#cart').html(data['count']);
-                    }
-                });
-            }
-            /////////////////////////////////////////////////////
-
-
-        })
-    </script>
     @stop
